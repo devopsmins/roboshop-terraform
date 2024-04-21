@@ -76,6 +76,60 @@ app = {
     app_subnet_name = "app_subnets"
     lb_subnet_name = "app_subnets"
   }
+  frontend = {
+    instance_type   = "t3.small"
+    instance_count  = 1
+    app_port        = 80
+    app_subnet_name = "web_subnets"
+    lb_subnet_name  = "public_subnets"
+    #alb_name        = "public"
+    #priority        = 1
+  }
+  cart = {
+    instance_type   = "t3.small"
+    instance_count  = 1
+    app_port        = 8080
+    app_subnet_name = "app_subnets"
+    lb_subnet_name  = "app_subnets"
+    #alb_name        = "private"
+    #priority        = 2
+  }
+  user = {
+    instance_type   = "t3.small"
+    instance_count  = 1
+    app_port        = 8080
+    app_subnet_name = "app_subnets"
+    lb_subnet_name  = "app_subnets"
+    #alb_name        = "private"
+    #priority        = 3
+  }
+  shipping = {
+    instance_type   = "t3.medium"
+    instance_count  = 1
+    app_port        = 8080
+    app_subnet_name = "app_subnets"
+    lb_subnet_name  = "app_subnets"
+    #alb_name        = "private"
+    #priority        = 4
+  }
+  payment = {
+    instance_type   = "t3.small"
+    instance_count  = 1
+    app_port        = 8080
+    app_subnet_name = "app_subnets"
+    lb_subnet_name  = "app_subnets"
+    #alb_name        = "private"
+    #priority        = 5
+  }
+  dispatch = {
+    instance_type   = "t3.small"
+    instance_count  = 1
+    app_port        = 8080
+    app_subnet_name = "app_subnets"
+    lb_subnet_name  = "app_subnets"
+    #alb_name        = "private"
+    #priority        = 6
+  }
 }
 
 
