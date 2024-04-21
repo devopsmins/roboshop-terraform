@@ -21,7 +21,7 @@ pipeline {
         stage('DEV Env') {
           steps {
             dir('DEV') {
-              git branch: 'main', url: 'https://github.com/devopsmins/expense-terraform'
+              git branch: 'main', url: 'https://github.com/devopsmins/roboshop-terraform'
               sh 'terraform init -backend-config=env-dev/state.tfvars'
               sh 'terraform ${ACTION} -auto-approve -var-file=env-dev/main.tfvars'
             }
