@@ -123,31 +123,31 @@ module "rabbitmq" {
 ################################################################################################
 ####### This is for Immutable and Mutable
 
-#module "app" {
+module "app" {
 #  depends_on = [module.alb, module.docdb, module.rds, module.elasticache, module.rabbitmq]
-#  source     = "git::https://github.com/raghudevopsb76/tf-module-app.git"
-#
-#  for_each       = var.app
-#  component      = each.key
-#  instance_type  = each.value["instance_type"]
-#  instance_count = each.value["instance_count"]
-#  app_port       = each.value["app_port"]
-#  priority       = each.value["priority"]
+  source     = "git::https://github.com/raghudevopsb76/tf-module-app.git"
+
+  for_each       = var.app
+  component      = each.key
+  instance_type  = each.value["instance_type"]
+  instance_count = each.value["instance_count"]
+  app_port       = each.value["app_port"]
+  #priority       = each.value["priority"]
 #  dns_name       = lookup(each.value, "dns_name", null)
+
+  env              = var.env
+  tags             = var.tags
+  kms              = var.kms
+  bastion_cidrs    = var.bastion_cidrs
+  prometheus_cidrs = var.prometheus_cidrs
+  route53_zone_id  = var.route53_zone_id
 #
-#  env              = var.env
-#  tags             = var.tags
-#  kms              = var.kms
-#  bastion_cidrs    = var.bastion_cidrs
-#  prometheus_cidrs = var.prometheus_cidrs
-#  route53_zone_id  = var.route53_zone_id
-#
-#  subnets      = lookup(lookup(module.vpc, "main", null), each.value["app_subnet_name"], null)
-#  vpc_id       = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#  sg_cidrs     = lookup(lookup(var.vpc, "main", null), each.value["lb_subnet_name"], null)
+  subnets      = lookup(lookup(module.vpc, "main", null), each.value["app_subnet_name"], null)
+  vpc_id       = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  sg_cidrs     = lookup(lookup(var.vpc, "main", null), each.value["lb_subnet_name"], null)
 #  alb_name     = lookup(lookup(module.alb, each.value["alb_name"], null), "alb_name", null)
 #  listener_arn = lookup(lookup(module.alb, each.value["alb_name"], null), "listener_arn", null)
-#}
+}
 #
 #module "alb" {
 #  source = "git::https://github.com/raghudevopsb76/tf-module-alb.git"
