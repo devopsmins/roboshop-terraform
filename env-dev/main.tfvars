@@ -78,15 +78,7 @@ app = {
     alb_name        = "private"
     priority        = 1
   }
-  frontend = {
-    instance_type   = "t3.small"
-    instance_count  = 1
-    app_port        = 80
-    app_subnet_name = "web_subnets"
-    lb_subnet_name  = "public_subnets"
-    alb_name        = "public"
-    priority        = 1
-  }
+
 }
 
 alb = {
