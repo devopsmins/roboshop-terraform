@@ -76,7 +76,7 @@ app = {
     app_subnet_name = "app_subnets"
     lb_subnet_name  = "app_subnets"
     alb_name        = "private"
-    #priority        = 1
+    priority        = 1
   }
   frontend = {
     instance_type   = "t3.small"
@@ -91,13 +91,13 @@ app = {
 
 alb = {
   public = {
-    certificate_arn = "arn:aws:acm:us-east-1:633788536644:certificate/f48fadb0-e24c-4370-90e8-d3718672a46e"
+    certificate_arn = "arn:aws:acm:us-east-1:827956817277:certificate/3841c970-14da-4ec8-84d4-4f62d433c424"
     internal        = false
     sg_cidrs        = ["0.0.0.0/0"]
     subnet_name     = "public_subnets"
   }
   private = {
-    certificate_arn = "arn:aws:acm:us-east-1:633788536644:certificate/f48fadb0-e24c-4370-90e8-d3718672a46e"
+    certificate_arn = "arn:aws:acm:us-east-1:827956817277:certificate/3841c970-14da-4ec8-84d4-4f62d433c424"
     internal        = true
     sg_cidrs        = ["10.11.2.0/24", "10.11.3.0/24", "10.11.4.0/24", "10.11.5.0/24"]
     subnet_name     = "app_subnets"
