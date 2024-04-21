@@ -14,6 +14,15 @@ pipeline {
   }
 
   stages {
+    stage('Parameter Store Update') {
+      steps {
+        dir('PS') {
+          git branch: 'main', url: 'https://github.com/devopsmins/aws-parameter-store'
+          sh 'terraform init'
+          sh 'terraform apply -auto-approve'
+        }
+      }
+    }
 
     stage('TF Action') {
       parallel {

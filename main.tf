@@ -18,26 +18,26 @@ module "vpc" {
 }
 
 
-#module "rds" {
-#  source = "git::https://github.com/raghudevopsb76/tf-module-rds.git"
-#
-#  for_each               = var.rds
-#  allocated_storage      = each.value["allocated_storage"]
-#  engine                 = each.value["engine"]
-#  engine_version         = each.value["engine_version"]
-#  instance_class         = each.value["instance_class"]
-#  parameter_group_family = each.value["parameter_group_family"]
-#
-#  env  = var.env
-#  tags = var.tags
-#  kms  = var.kms
-#
-#  subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets", null)
-#  vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#  sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets", null)
-#
-#}
-#
+module "rds" {
+  source = "git::https://github.com/raghudevopsb76/tf-module-rds.git"
+
+  for_each               = var.rds
+  allocated_storage      = each.value["allocated_storage"]
+  engine                 = each.value["engine"]
+  engine_version         = each.value["engine_version"]
+  instance_class         = each.value["instance_class"]
+  parameter_group_family = each.value["parameter_group_family"]
+
+  env  = var.env
+  tags = var.tags
+  kms  = var.kms
+
+  subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets", null)
+  vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets", null)
+
+}
+
 #
 #module "docdb" {
 #  source = "git::https://github.com/raghudevopsb76/tf-module-docdb.git"
