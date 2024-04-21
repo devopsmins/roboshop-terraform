@@ -12,6 +12,9 @@ default_vpc_cidr       = "172.31.0.0/16"
 route53_zone_id = "Z05815251WQO0OK50UPQR"
 kms             = "arn:aws:kms:us-east-1:827956817277:key/42af000f-94d6-4913-a952-14877c37a92e"
 certificate_arn = "arn:aws:acm:us-east-1:827956817277:certificate/3841c970-14da-4ec8-84d4-4f62d433c424"
+bastion_cidrs    = ["172.31.46.160/32"]
+prometheus_cidrs = ["172.31.46.200/32"]
+
 
 
 vpc =  {
@@ -56,5 +59,11 @@ elasticache = {
     node_type              = "cache.t3.micro"
     parameter_group_family = "redis6.x"
     num_cache_nodes        = 1
+  }
+}
+
+rabbitmq = {
+  main = {
+    instance_type = "t3.small"
   }
 }
