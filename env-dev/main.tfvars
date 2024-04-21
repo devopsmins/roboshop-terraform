@@ -13,7 +13,7 @@ default_vpc_cidr       = "172.31.0.0/16"
 
 vpc =  {
   main = {
-    cidr_block = "10.11.0.0/16"
+    vpc_cidr_block = "10.11.0.0/16"
 
 
     public_subnets = ["10.11.0.0/24", "10.11.1.0/24"]
