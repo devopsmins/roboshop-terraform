@@ -9,7 +9,7 @@ variable "rds" {}
 variable "route53_zone_id" {}
 variable "kms" {}
 variable "certificate_arn" {}
-#variable "docdb" {}
+variable "docdb" {}
 #variable "elasticache" {}
 #variable "bastion_cidrs" {}
 #variable "prometheus_cidrs" {}
