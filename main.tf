@@ -132,8 +132,8 @@ module "app" {
   instance_type  = each.value["instance_type"]
   instance_count = each.value["instance_count"]
   app_port       = each.value["app_port"]
-  #priority       = each.value["priority"]
-#  dns_name       = lookup(each.value, "dns_name", null)
+  priority       = each.value["priority"]
+  dns_name       = lookup(each.value, "dns_name", null)
 
   env              = var.env
   tags             = var.tags
@@ -145,27 +145,27 @@ module "app" {
   subnets      = lookup(lookup(module.vpc, "main", null), each.value["app_subnet_name"], null)
   vpc_id       = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   sg_cidrs     = lookup(lookup(var.vpc, "main", null), each.value["lb_subnet_name"], null)
-#  alb_name     = lookup(lookup(module.alb, each.value["alb_name"], null), "alb_name", null)
-#  listener_arn = lookup(lookup(module.alb, each.value["alb_name"], null), "listener_arn", null)
+  alb_name     = lookup(lookup(module.alb, each.value["alb_name"], null), "alb_name", null)
+  listener_arn = lookup(lookup(module.alb, each.value["alb_name"], null), "listener_arn", null)
 }
-#
-#module "alb" {
-#  source = "git::https://github.com/raghudevopsb76/tf-module-alb.git"
-#
-#  for_each        = var.alb
-#  certificate_arn = each.value["certificate_arn"]
-#  internal        = each.value["internal"]
-#  sg_cidrs        = each.value["sg_cidrs"]
-#
-#  type = each.key
-#
-#  env             = var.env
-#  route53_zone_id = var.route53_zone_id
-#  tags            = var.tags
-#
-#  vpc_id  = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#  subnets = lookup(lookup(module.vpc, "main", null), each.value["subnet_name"], null)
-#
-#}
+
+module "alb" {
+  source = "git::https://github.com/raghudevopsb76/tf-module-alb.git"
+
+  for_each        = var.alb
+  certificate_arn = each.value["certificate_arn"]
+  internal        = each.value["internal"]
+  sg_cidrs        = each.value["sg_cidrs"]
+
+  type = each.key
+
+  env             = var.env
+  route53_zone_id = var.route53_zone_id
+  tags            = var.tags
+
+  vpc_id  = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  subnets = lookup(lookup(module.vpc, "main", null), each.value["subnet_name"], null)
+
+}
 
 ################################################################################################

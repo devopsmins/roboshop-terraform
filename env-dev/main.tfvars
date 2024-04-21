@@ -75,7 +75,7 @@ app = {
     app_port        = 8080
     app_subnet_name = "app_subnets"
     lb_subnet_name  = "app_subnets"
-    #alb_name        = "private"
+    alb_name        = "private"
     #priority        = 1
   }
   frontend = {
@@ -84,7 +84,7 @@ app = {
     app_port        = 80
     app_subnet_name = "web_subnets"
     lb_subnet_name  = "public_subnets"
-    #alb_name        = "public"
+    alb_name        = "public"
     #priority        = 1
   }
 }
