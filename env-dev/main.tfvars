@@ -68,18 +68,7 @@ rabbitmq = {
   }
 }
 
-app = {
-  catalogue = {
-    instance_type   = "t3.small"
-    instance_count  = 1
-    app_port        = 8080
-    app_subnet_name = "app_subnets"
-    lb_subnet_name  = "app_subnets"
-    alb_name        = "private"
-    priority        = 1
-  }
 
-}
 
 alb = {
   public = {
