@@ -149,23 +149,23 @@ module "app" {
   #listener_arn = lookup(lookup(module.alb, each.value["alb_name"], null), "listener_arn", null)
 }
 
-#module "alb" {
- # source = "git::https://github.com/raghudevopsb76/tf-module-alb.git"
+module "alb" {
+  source = "git::https://github.com/devopsmins/tf-module-alb.git"
 
-  #for_each        = var.alb
-  #certificate_arn = each.value["certificate_arn"]
-  #internal        = each.value["internal"]
-  #sg_cidrs        = each.value["sg_cidrs"]
+  for_each        = var.alb
+  certificate_arn = each.value["certificate_arn"]
+  internal        = each.value["internal"]
+  sg_cidrs        = each.value["sg_cidrs"]
 
-  #type = each.key
+  type = each.key
 
-  #env             = var.env
-  #route53_zone_id = var.route53_zone_id
-  #tags            = var.tags
+  env             = var.env
+  route53_zone_id = var.route53_zone_id
+  tags            = var.tags
 
-  #vpc_id  = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-  #subnets = lookup(lookup(module.vpc, "main", null), each.value["subnet_name"], null)
+  vpc_id  = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  subnets = lookup(lookup(module.vpc, "main", null), each.value["subnet_name"], null)
 
-#}
+}
 
 ################################################################################################
