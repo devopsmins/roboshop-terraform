@@ -85,7 +85,7 @@ app = {
     app_subnet_name = "web_subnets"
     lb_subnet_name  = "public_subnets"
     alb_name        = "public"
-    #priority        = 1
+    priority        = 1
   }
 }
 
