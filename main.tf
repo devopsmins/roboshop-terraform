@@ -124,7 +124,7 @@ module "rabbitmq" {
 ####### This is for Immutable and Mutable
 
 module "app" {
-#  depends_on = [module.alb, module.docdb, module.rds, module.elasticache, module.rabbitmq]
+  depends_on = [module.alb, module.docdb, module.rds, module.elasticache, module.rabbitmq]
   source     = "git::https://github.com/devopsmins/tf-module-app.git"
 
   for_each       = var.app
