@@ -18,6 +18,7 @@ prometheus_cidrs = ["172.31.46.200/32"]
 
 
 
+
 vpc =  {
   main = {
     vpc_cidr_block = "10.11.0.0/16"
@@ -152,3 +153,4 @@ alb = {
     subnet_name     = "app_subnets"
   }
 }
+
